@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per te ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Libreria per i coriandoli quando arriva a 500 -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Sfondo con le stelline dinamiche -->
+    <div class="sfondo-stellato" id="stellato"></div>
+
+    <!-- PRIMA SCHERMATA -->
+    <div class="hero">
+        <h1>Ti amo ❤️</h1>
+        <p class="sottotitolo">Sei la parte migliore delle mie giornate.</p>
+
+        <div class="nuvoletta">questo cuoricino è per te 🎈</div>
+        
+        <!-- Stickman curato e animato -->
+        <div class="stickman-container" id="stickman">
+            <svg width="210" height="250" viewBox="0 0 210 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="cuoreGrad" cx="35%" cy="28%" r="70%">
+                        <stop offset="0%" stop-color="#ff8fa3"/>
+                        <stop offset="45%" stop-color="#ff2a55"/>
+                        <stop offset="100%" stop-color="#9e0e32"/>
+                    </radialGradient>
+                    <filter id="glowCuore" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="4" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+
+                <g class="palloncino-animato">
+                    <path d="M155 42 C155 20, 125 20, 125 42 C125 20, 95 20, 95 42 C95 70, 125 90, 125 90 C125 90, 155 70, 155 42 Z" fill="url(#cuoreGrad)" filter="url(#glowCuore)"/>
+                    <path d="M107 33 Q104 42 108 50" stroke="rgba(255,255,255,0.6)" stroke-width="3.2" stroke-linecap="round"/>
+                    <circle cx="111" cy="27" r="2" fill="rgba(255,255,255,0.6)"/>
+                    <path d="M125 90 L120 97 Q125 99 130 97 Z" fill="#b5173e"/>
+                    <path d="M125 98 C122 115, 108 122, 100 134" stroke="rgba(255,255,255,0.9)" stroke-width="2.3" stroke-linecap="round"/>
+                </g>
+
+                <g class="omino-respiro">
+                    <ellipse cx="68" cy="232" rx="26" ry="4" fill="rgba(255, 77, 109, 0.18)"/>
+                    <circle cx="68" cy="110" r="23" stroke="white" stroke-width="3.8" fill="#130711"/>
+                    <circle cx="60" cy="107" r="3" fill="white"/>
+                    <circle cx="61" cy="106" r="1" fill="#130711"/>
+                    <circle cx="76" cy="107" r="3" fill="white"/>
+                    <circle cx="77" cy="106" r="1" fill="#130711"/>
+                    <ellipse cx="53" cy="113" rx="3.8" ry="2" fill="#ff4d6d" opacity="0.8"/>
+                    <ellipse cx="83" cy="113" rx="3.8" ry="2" fill="#ff4d6d" opacity="0.8"/>
+                    <path d="M62 116 Q68 123 74 116" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M68 133 Q67 160 68 186" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
+                    <path d="M72.5 152 C72.5 148, 67.5 148, 67.5 152 C67.5 148, 62.5 148, 62.5 152 C62.5 157, 67.5 161, 67.5 161 C67.5 161, 72.5 157, 72.5 152 Z" fill="#ff4d6d"/>
+                    <path d="M67 144 Q49 158 52 176" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
+                    <circle cx="52" cy="176" r="2.8" fill="white"/>
+                    <path d="M68 144 Q85 143 100 134" stroke="white" stroke-width="3.8" stroke-linecap="round"/>
+                    <circle cx="100" cy="134" r="3.2" fill="white"/>
+                    <path d="M68 186 Q58 208 52 228 L43 228" stroke="white" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M68 186 Q78 208 84 228 L93 228" stroke="white" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </div>
+
+        <button class="btn-principale" onclick="ricambia()">anche io <3 ✨</button>
+
+        <div class="contatore" id="testoContatore">
+            Hai ricambiato l'amore 0 volte
+        </div>
+
+        <!-- MESSAGGIO SEGRETO (Inizialmente nascosto, appare a 500) -->
+        <div class="messaggio-segreto nascosto" id="messaggioSegreto">
+            <h3>💌 Messaggio Segreto Sbloccato!</h3>
+            <p>Lo so che ti sei rotta le scatole per arrivare fino a 500, ma ne è valsa la pena. Voglio dirti che ti amo così tanto che non mi riesco ad immaginare un futuro senza di te e sono serio. Ti amo infinitamente infinito per sempre. ❤️</p>
+        </div>
+
+        <a href="#dedica" class="scorri-giu">Scorri verso il basso per leggere la dedica ↓</a>
+    </div>
+
+    <!-- SECONDA SCHERMATA: DEDICA -->
+    <div class="sezione-dedica" id="dedica">
+        <div class="card-dedica">
+            <h2>Per te...</h2>
+            <p>
+                Ho voluto creare questo piccolo spazio solo per noi, per ricordarti quanto sei importante per me. 
+                Grazie per ogni sorriso, per ogni momento insieme e per rendere speciale anche la giornata più semplice.
+            </p>
+            <p>
+                Qualunque cosa accada, il mio cuore sarà sempre dalla tua parte.
+            </p>
+            <div class="firma">Con tutto il mio amore ❤️</div>
+        </div>
+
+        <!-- PICCOLO INDIZIO NASCOSTO -->
+        <p class="indizio-segreto">P.S. Chissà cosa succede se arrivi a 500 cuori... ✨</p>
+
+        <!-- TASTINO PER AZZERARE I CUORI -->
+        <button class="btn-reset" onclick="azzeraCuori()">Ricomincia da zero 🔄</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
